@@ -1,6 +1,16 @@
 import { AvatarProps } from "@/types/avatar";
+import {ListItemProps} from "@/types/listItem";
 
-function Avatar({person, size=100}: AvatarProps) {
+function ListItem({label, content}: ListItemProps) {
+  return (
+    <li>
+      <b>{label}: </b>
+      {content}
+    </li>
+  );
+}
+
+function Avatar({person, profession, awards, discovered, size=100}: AvatarProps) {
   return (
     <section>
       <h2>{person.name}</h2>
@@ -11,6 +21,11 @@ function Avatar({person, size=100}: AvatarProps) {
       width={size}
       height={size}
     />
+    <ul>
+      <ListItem label={profession.label} content={profession.content} />
+      <ListItem label={awards.label} content={awards.content} />
+      <ListItem label={discovered.label} content={discovered.content} />
+    </ul>
     </section>
   );
 }
@@ -19,45 +34,19 @@ export default function Gallery() {
   return (
     <div>
       <h1>Notable Scientists</h1>
-      
-      <section className="profile">
         <Avatar
             person={{ name: 'Maria Skłodowska-Curie', imageId: 'szV5sdG'}}
+            profession={{ label: 'Profession: ', content: 'physicist and chemist'}}
+            awards={{ label: 'Awards: ', content: 'Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal'}}
+            discovered={{ label: 'Discovered: ', content: 'polonium (element)'}}
             size={70} />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            physicist and chemist
-          </li>
-          <li>
-            <b>Awards: 4 </b>
-            (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            polonium (element)
-          </li>
-        </ul>
-      </section>
-      <section className="profile">
+      
         <Avatar
             person={{ name: 'Katsuko Saruhashi', imageId: 'YfeOqp2'}}
+            profession={{ label: 'Profession: ', content: 'geochemist'}}
+            awards={{ label: 'Awards: ', content: 'Miyake Prize for geochemistry, Tanaka Prize'}}
+            discovered={{ label: 'Discovered: ', content: 'a method for measuring carbon dioxide in seawater'}}
             size={70} />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            geochemist
-          </li>
-          <li>
-            <b>Awards: 2 </b>
-            (Miyake Prize for geochemistry, Tanaka Prize)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            a method for measuring carbon dioxide in seawater
-          </li>
-        </ul>
-      </section>
     </div>
   );
 }

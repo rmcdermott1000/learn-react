@@ -2,10 +2,10 @@
 // import Image from 'next/image'
 // import { Inter } from 'next/font/google'
 // import styles from '@/styles/Home.module.css'
-import MyComp from './qcomps/firstcomp'
+import PackingList from "./qcomps/props_item"
 
 export default function Home() {
   return (
-    <MyComp />
+    <PackingList />
   )
 }
