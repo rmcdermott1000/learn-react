@@ -6,10 +6,23 @@ let initialArtists = [
   { id: 2, name: 'Louise Nevelson'},
 ];
 
+
+
 export default function List() {
   const [artists, setArtists] = useState(
     initialArtists
   );
+
+  function removeItem(artistId:number){
+    let newList = []
+    for(let i=0; i<artists.length; i++){
+      if (artists[i].id != artistId){
+        newList.push(artists[i])
+      }
+    }
+  
+    setArtists(newList);
+  }
 
   return (
     <>
@@ -19,7 +32,7 @@ export default function List() {
           <li key={artist.id}>
             {artist.name}{' '}
             <button onClick={() => {
-              artists.splice(artist.id, 1)
+              removeItem(artist.id)
             }}>
               Delete
             </button>

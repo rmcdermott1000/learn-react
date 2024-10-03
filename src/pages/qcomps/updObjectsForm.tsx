@@ -8,7 +8,11 @@ export default function Scoreboard() {
   });
 
   function handlePlusClick() {
-    player.likescore++;
+
+    setPlayer({
+      ...player,
+      likescore: player.likescore + 1,
+    });
   }
 
   function handleFirstNameChange(e: { target: { value: string; }; }) {
@@ -19,7 +23,10 @@ export default function Scoreboard() {
   }
 
   function handleLastNameChange(e: { target: { value: string; }; }) {
-    player.lastName = e.target.value;
+    setPlayer({
+      ...player,
+      lastName: e.target.value,
+    });
   }
 
   return (
